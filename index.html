@@ -3,44 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Closet - Romantic Promenade</title>
+  <title>My Closet - Classical Lolita Wardrobe</title>
   <style>
     :root {
-      --bg-color: #fdfbf7;
-      --card-bg: #ffffff;
-      --accent-color: #d4a373;
-      --pink-accent: #e8a5b8;
-      --text-color: #4a3e3d;
-      --border-color: #f0d9e1;
+      --bg-color: #f7f3ed;
+      --card-bg: #fffdfa;
+      --main-brown: #5c4033;
+      --rose-accent: #9e5b66;
+      --border-gold: #c5a059;
+      --light-border: #e2d7c7;
+      --text-muted: #7a6858;
     }
 
     body {
       margin: 0;
       padding: 15px;
       background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--main-brown);
+      font-family: "Georgia", "Times New Roman", "YuMincho", "Hiragino Mincho ProN", serif;
     }
 
     header {
       text-align: center;
-      padding: 20px 10px;
-      border-bottom: 2px dashed var(--pink-accent);
-      margin-bottom: 20px;
+      padding: 25px 10px 15px;
+      border-top: 3px double var(--border-gold);
+      border-bottom: 3px double var(--border-gold);
+      margin-bottom: 25px;
+      background: rgba(255, 253, 250, 0.7);
     }
 
     h1 {
       margin: 0;
       font-size: 1.8rem;
-      color: #8b5e66;
+      color: var(--rose-accent);
       font-weight: normal;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
     }
 
     p.subtitle {
-      margin-top: 5px;
-      font-size: 0.85rem;
-      color: #a38288;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     /* コントロールエリア */
@@ -49,47 +53,57 @@
       flex-direction: column;
       gap: 12px;
       margin-bottom: 25px;
+      background: var(--card-bg);
+      padding: 15px;
+      border: 1px solid var(--light-border);
+      border-radius: 8px;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 10px 15px;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-gold);
+      border-radius: 4px;
       box-sizing: border-box;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       background-color: #fff;
+      color: var(--main-brown);
       outline: none;
+      font-family: inherit;
     }
 
     .filter-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
     .filter-btn {
-      padding: 6px 14px;
-      border: 1px solid var(--pink-accent);
-      background-color: #fff;
-      color: #8b5e66;
-      border-radius: 15px;
-      font-size: 0.85rem;
+      padding: 6px 12px;
+      border: 1px solid var(--border-gold);
+      background-color: var(--card-bg);
+      color: var(--main-brown);
+      border-radius: 4px;
+      font-size: 0.8rem;
       cursor: pointer;
+      font-family: inherit;
+      transition: 0.2s;
     }
 
     .filter-btn.active {
-      background-color: var(--pink-accent);
+      background-color: var(--rose-accent);
       color: #fff;
+      border-color: var(--rose-accent);
     }
 
     .r18-toggle {
       margin-top: 5px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       display: flex;
       align-items: center;
-      gap: 5px;
-      color: #b05c6d;
+      gap: 6px;
+      color: var(--rose-accent);
+      font-weight: bold;
     }
 
     /* グリッドカード表示 */
@@ -101,50 +115,61 @@
 
     .card {
       background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border: 1px solid var(--light-border);
+      border-radius: 6px;
       padding: 10px;
-      box-shadow: 0 4px 10px rgba(232, 165, 184, 0.15);
+      box-shadow: 0 2px 8px rgba(92, 64, 51, 0.08);
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     .card img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      border-radius: 8px;
-      background-color: #f7ede2;
+      border-radius: 4px;
+      border: 1px solid var(--light-border);
+      background-color: #f2ebe1;
     }
 
     .card-title {
       font-weight: bold;
-      font-size: 0.95rem;
-      margin: 8px 0 4px 0;
-      color: #5c4347;
+      font-size: 0.9rem;
+      margin: 8px 0 2px 0;
+      color: var(--main-brown);
     }
 
     .card-tag {
-      font-size: 0.75rem;
-      color: var(--accent-color);
-      margin-bottom: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .badge-r18 {
+      display: inline-block;
+      background: var(--rose-accent);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-left: 4px;
     }
 
     .copy-btn {
       margin-top: auto;
       padding: 8px;
-      background-color: #f7d6e0;
-      border: none;
-      border-radius: 8px;
-      color: #6b3e4b;
-      font-size: 0.8rem;
-      font-weight: bold;
+      background-color: #efe6d8;
+      border: 1px solid var(--border-gold);
+      border-radius: 4px;
+      color: var(--main-brown);
+      font-size: 0.75rem;
       cursor: pointer;
-      width: 100%;
+      font-family: inherit;
     }
 
     .copy-btn:active {
-      background-color: var(--pink-accent);
+      background-color: var(--rose-accent);
       color: #fff;
     }
   </style>
@@ -153,41 +178,95 @@
 
   <header>
     <h1>My Closet</h1>
-    <p class="subtitle">✨ Prompt & Outfit Collection ✨</p>
+    <p class="subtitle">𝔫𝔬𝔰𝔱𝔞𝔩𝔲𝔦𝔠 & 𝔠𝔩𝔞𝔰𝔰𝔦𝔠𝔞𝔩 𝔴𝔞𝔯𝔡𝔯𝔬𝔟𝔢</p>
   </header>
 
   <div class="controls">
     <div class="search-bar">
-      <input type="text" placeholder="衣装や雰囲気で検索...">
+      <input type="text" id="searchInput" placeholder="衣装名やキーワードで検索..." oninput="filterItems()">
     </div>
+    
     <div class="filter-group">
-      <button class="filter-btn active">すべて</button>
-      <button class="filter-btn">女性用</button>
-      <button class="filter-btn">男性用</button>
-      <button class="filter-btn">男女共通</button>
-      <button class="filter-btn">その他</button>
+      <button class="filter-btn active" onclick="setCategory('all', this)">すべて</button>
+      <button class="filter-btn" onclick="setCategory('female', this)">女性用</button>
+      <button class="filter-btn" onclick="setCategory('male', this)">男性用</button>
+      <button class="filter-btn" onclick="setCategory('unisex', this)">男女共通</button>
+      <button class="filter-btn" onclick="setCategory('other', this)">その他</button>
     </div>
+
     <label class="r18-toggle">
-      <input type="checkbox"> R-18表示を有効にする
+      <input type="checkbox" id="r18Toggle" onchange="filterItems()"> 🥀 R-18表示を許可する
     </label>
   </div>
 
-  <div class="gallery">
-    <!-- お試しサンプルカード1 -->
-    <div class="card">
-      <img src="https://via.placeholder.com/150/f7d6e0/6b3e4b?text=Rococo+Dress" alt="ロココドレス">
-      <div class="card-title">クラシカルロココ</div>
-      <div class="card-tag">女性用 / クラシック</div>
-      <button class="copy-btn" onclick="navigator.clipboard.writeText('rococo dress, pastel pink, frills, ribbon, masterpiece')">プロンプトをコピー</button>
+  <div class="gallery" id="gallery">
+    <!-- サンプルアイテム1 -->
+    <div class="card" data-category="female" data-r18="false" data-keywords="クラシカルロリータ アンティーク ドレス ワンピース">
+      <img src="https://via.placeholder.com/200/f2ebe1/5c4033?text=Classical+Dress" alt="クラシカルドレス">
+      <div class="card-title">ヴィクトリアンドレス</div>
+      <div class="card-tag">女性用</div>
+      <button class="copy-btn" onclick="copyPrompt('classical lolita dress, Victorian style, tea length, high neck, long sleeves, muted brown')">📋 プロンプトをコピー</button>
     </div>
-    <!-- お試しサンプルカード2 -->
-    <div class="card">
-      <img src="https://via.placeholder.com/150/f0d9e1/5c4347?text=Gothic+Lolita" alt="ゴスロリ">
-      <div class="card-title">ゴシックロリータ</div>
-      <div class="card-tag">女性用 / ロリータ</div>
-      <button class="copy-btn" onclick="navigator.clipboard.writeText('gothic lolita dress, black lace, bonnet, Victorian style')">プロンプトをコピー</button>
+
+    <!-- サンプルアイテム2 -->
+    <div class="card" data-category="male" data-r18="false" data-keywords="皇子系 テーラードジャケット スーツ">
+      <img src="https://via.placeholder.com/200/e8ded1/5c4033?text=Ouji+Style" alt="皇子系">
+      <div class="card-title">皇子風スリーピース</div>
+      <div class="card-tag">男性用</div>
+      <button class="copy-btn" onclick="copyPrompt('ouji style, classic vest, tailored jacket, cravat, aristocratic')">📋 プロンプトをコピー</button>
+    </div>
+
+    <!-- サンプルアイテム3 (R18用サンプル) -->
+    <div class="card" data-category="female" data-r18="true" data-keywords="ランジェリー ロリータ">
+      <img src="https://via.placeholder.com/200/9e5b66/ffffff?text=R-18+Sample" alt="R18サンプル">
+      <div class="card-title">シルクリボンセット <span class="badge-r18">R-18</span></div>
+      <div class="card-tag">女性用</div>
+      <button class="copy-btn" onclick="copyPrompt('silk lingerie, lace trim, pink ribbon, delicate detail')">📋 プロンプトをコピー</button>
     </div>
   </div>
+
+  <script>
+    let currentCategory = 'all';
+
+    function setCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = cat;
+      filterItems();
+    }
+
+    function filterItems() {
+      const searchText = document.getElementById('searchInput').value.toLowerCase();
+      const showR18 = document.getElementById('r18Toggle').checked;
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const isR18 = card.getAttribute('data-r18') === 'true';
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+
+        const matchCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchSearch = (title.includes(searchText) || keywords.includes(searchText));
+        const matchR18 = !isR18 || showR18;
+
+        if (matchCat && matchSearch && matchR18) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function copyPrompt(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✨ プロンプトをコピーしました！');
+      });
+    }
+
+    // 初期状態の表示（R18は隠す）
+    filterItems();
+  </script>
 
 </body>
 </html>
